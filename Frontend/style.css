@@ -1,0 +1,233 @@
+:root {
+    --bg: #f0f0f0;
+    --text: #333;
+    --card-bg: #ffffff;
+    --accent: #4e73df;
+    --table-header: #4e73df;
+    --table-text: #333;
+  }
+  
+  [data-theme="dark"] {
+    --bg: #1f1f1f;
+    --text: #eee;
+    --card-bg: #2c2c2c;
+    --accent: #8ab4f8;
+    --table-header: #8ab4f8;
+    --table-text: #eee;
+  }
+  
+ 
+body {
+    margin: 0;
+    padding: 20px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+#mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    color: var(--text);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#mode-toggle:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+h1 {
+    color: var(--accent);
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap in smaller screens */
+    justify-content: center; /* Center content */
+    gap: 24px; /* Space between cards */
+    margin: 30px auto;
+    max-width: 1200px;
+    padding: 0 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 25px 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 300px; /* Cards will flex, with a minimum width of 300px */
+    min-width: 250px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    margin: 0 0 12px;
+    color: var(--accent);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.card .value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-top: 10px;
+}
+
+.card:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+}
+
+.dashboard-section {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.dashboard-section h2 {
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+
+canvas {
+    max-width: 100%;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, color 0.3s;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: var(--text);
+}
+
+th {
+    background: var(--table-header);
+    color: #fff;
+}
+
+tbody tr:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.badge.active {
+    background: #28a745;
+}
+
+.badge.pending {
+    background: #ffc107;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+input,
+textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: var(--card-bg);
+    color: var(--text);
+    transition: all 0.3s;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.primary-btn {
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.primary-btn:hover {
+    transform: scale(1.05);
+    background: #355ed7;
+}
+
+@media (max-width: 1200px) {
+    .stats {
+        flex-direction: row; /* Ensure cards are aligned in row */
+        gap: 20px;
+    }
+
+    .card {
+        width: 100%; /* Make cards take full width */
+    }
+}
+
+@media (max-width: 768px) {
+    .stats {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 20px 25px;
+        width: 100%; /* Make each card take full width on smaller screens */
+    }
+
+    .primary-btn {
+        padding: 10px 20px; /* Adjust button padding */
+    }
+}

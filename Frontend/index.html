@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReferralHub Interactive Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <button id="mode-toggle">🌙 Dark Mode</button>
+
+  <div class="header">
+    <h1>Welcome, Khushi — ReferralHub Dashboard</h1>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="card">
+      <h3>Total Referrals</h3>
+      <p>120 (+12%)</p>
+    </div>
+    <div class="card">
+      <h3>New Customers</h3>
+      <p>94 (+8%)</p>
+    </div>
+    <div class="card">
+      <h3>Campaigns Running</h3>
+      <p>3</p>
+    </div>
+  </div>
+  
+  <!-- Performance Chart -->
+  <div class="dashboard-section">
+    <h2>Referral Performance (Last 6 Months)</h2>
+    <canvas id="performanceChart"></canvas>
+  </div>
+
+  <!-- Interactive Referral Table -->
+  <div class="dashboard-section">
+    <h2>Recent Referrals</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Referrer</th>
+          <th>Date</th>
+          <th>Reward</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Anjali</td>
+          <td>2024-04-15</td>
+          <td>$20</td>
+          <td><span class="badge active">Active</span></td>
+        </tr>
+        <tr>
+          <td>Rohan</td>
+          <td>2024-04-13</td>
+          <td>$10</td>
+          <td><span class="badge pending">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Campaign Form -->
+  <div class="dashboard-section">
+    <h2>Create New Campaign</h2>
+    <form id="campaignForm">
+      <input type="text" placeholder="Campaign Name" required>
+      <input type="text" placeholder="Reward Amount (eg. 20%)" required>
+      <textarea placeholder="Referral Message" required></textarea>
+      <button type="submit" class="primary-btn">Create Campaign</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
