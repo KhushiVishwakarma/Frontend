@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Referral Campaign - ReferralHub</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8; /* Light background */
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            width: 250px;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-logo {
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #333;
+            padding-left: 10px;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            text-decoration: none;
+            color: #555;
+            border-radius: 5px;
+        }
+
+        .sidebar-nav a.active {
+            background-color: #e0f7fa; /* Light active color */
+            color: #00bcd4; /* Active color */
+            font-weight: bold;
+        }
+
+        .sidebar-nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .sidebar-nav a svg {
+            margin-right: 10px; /* Space for icons */
+            width: 20px;
+            height: 20px;
+            fill: #777;
+        }
+
+        .sidebar-nav a.active svg {
+            fill: #00bcd4;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-title h1 {
+            margin: 0;
+            color: #333;
+            font-size: 1.5em;
+        }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-user img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .campaign-creation-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .campaign-creation-header button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #f0f0f0;
+            color: #555;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .campaign-creation-header button.active {
+            background-color: #6366f1;
+            color: white;
+        }
+
+        .campaign-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 700px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23555" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            padding-right: 30px;
+        }
+
+        .reward-type-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .reward-type-options button {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            color: #555;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .reward-type-options button.active {
+            background-color: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+
+        .follow-up-strategy {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        .follow-up-strategy-title {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .follow-up-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .follow-up-item:last-child {
+            border-bottom: none;
+        }
+
+        .follow-up-item span {
+            flex-grow: 1;
+        }
+
+        .follow-up-item button {
+            border: none;
+            background: none;
+            color: #777;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        .landing-page-preview {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        .landing-page-preview-title {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .preview-iframe-container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 300px; /* Adjust as needed */
+        }
+
+        .preview-iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .next-button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .next-button-container button {
+            background-color: #6366f1;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .next-button-container button:hover {
+            background-color: #4f46e5;
+        }
+
+        /* Placeholder for sidebar icons */
+        .sidebar-nav a[href="campaign.html"] svg { /* Replace with actual icon */ }
+        .sidebar-nav a[href="dash.html"] svg { /* Replace with actual icon */ }
+        .sidebar-nav a[href="setupai.html"] svg { /* Replace with actual icon */ }
+        .sidebar-nav a[href="platform.html"] svg { /* Replace with actual icon */ }
+        .sidebar-nav a[href="promoters.html"] svg { /* Replace with actual icon */ }
+        .sidebar-nav a[href="leads.html"] svg { /* Replace with actual icon */ }
+        .sidebar-nav a[href="#payouts"] svg { /* Replace with actual icon */ }
+        .sidebar-nav a[href="#settings"] svg { /* Replace with actual icon */ }
+        .sidebar-nav a[href="#help"] svg { /* Replace with actual icon */ }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">ReferralHub</div>
+        <ul class="sidebar-nav">
+            <li><a href="platform.html"><span>⚙️</span> Platform Setup</a></li>
+            <li><a href="setupai.html"><span>🤖</span> AI Agent</a></li>
+            <li><a href="dash.html"><span>📊</span> Dashboard</a></li>
+            <li><a href="Campaign.html" class="active"><span>🚀</span> Campaign</a></li>
+            <li><a href="promoters.html"><span>👥</span> Promoters</a></li>
+            <li><a href="leads.html"><span>📋</span> Leads</a></li>
+            <li><a href="#"><span>💰</span> Payouts</a></li>
+        </ul>
+        <ul class="sidebar-nav bottom-nav">
+            <li><a href="#"><span>⚙️</span> Settings</a></li>
+            <li><a href="#"><span>❓</span> Help</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="header-title"><h1>Create New Referral Campaign</h1></div>
+            <div class="header-user">
+                <img src="assets/image.png" alt="User Avatar"> <span>Kadin Stanton</span>
+            </div>
+        </div>
+
+        <div class="campaign-creation-header">
+            <button class="" onclick="window.location.href='Campaign.html'">Promoter Settings</button>
+            <button class="active">Landing Page Settings</button>
+            <button class="" onclick="window.location.href='leads.html'">Limts & Settings</button>
+        </div>
+
+        <form class="campaign-form">
+            <div class="form-group">
+                <label for="campaign-name">Campaign Name</label>
+                <input type="text" id="campaign-name" value="Summer Referral Special">
+            </div>
+
+            <div class="form-group">
+                <label for="reward-type">Reward Type</label>
+                <div class="reward-type-options">
+                    <button class="active">Points</button>
+                    <button>Percentage</button>
+                    <button>Fixed Amount</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="reward-value">Reward Value *</label>
+                <input type="text" id="reward-value" value="200 points">
+            </div>
+
+            <div class="form-group">
+                <label for="promoter-message">Promoter Message</label>
+                <textarea id="promoter-message">Hey! Share this with your friends and earn $20 for each successful signup!</textarea>
+            </div>
+
+            <div class="form-group follow-up-strategy">
+                <div class="follow-up-strategy-title">Follow-Up Strategy</div>
+                <div class="follow-up-item">
+                    <span>Wait, Remind</span>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+                <div class="follow-up-item">
+                    <span>Wait, Engage</span>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+                <div class="follow-up-item">
+                    <span>Wait, Educate</span>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+                <div class="follow-up-item">
+                    <span>Wait, Nudge</span>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+                <div class="follow-up-item">
+                    <span>Wait, Convert</span>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+                <div class="follow-up-item">
+                    <span>Wait, Thank</span>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+
+            <div class="form-group landing-page-preview">
+                <div class="landing-page-preview-title">Landing Page Preview</div>
+                <div class="preview-iframe-container">
+                    <iframe srcdoc='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Referral Program</title><style>body {font-family: sans-serif; margin: 20px; background-color: #f4f6f8; text-align: center;} .container {background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); max-width: 500px; margin: 20px auto;} .logo {width: 80px; height: 80px; border-radius: 50%; background-color: #ddd; margin: 0 auto 20px; display: flex; justify-content: center; align-items: center; font-size: 1.5em; color: #555;} h2 {color: #333; margin-bottom: 10px;} p {color: #555; margin-bottom: 20px; line-height: 1.6;} .reward-info {background-color: #e0f7fa; color: #00bcd4; padding: 15px; border-radius: 5px; margin-bottom: 20px;} .action-button {background-color: #6366f1; color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; text-decoration: none; display: inline-block;} .action-button:hover {background-color: #4f46e5;} small {color: #777; display: block; margin-top: 10px;}</style></head><body><div class="container"><div class="logo">SN</div><h2>Welcome back! You're promoting:</h2><p><strong>SnackNation Express</strong></p><p>Invite your friends to try SnackNation Express and they\'ll get a special offer!</p><div class="reward-info">Every successful referral earns you <strong>200 points</strong></div><a href="Newpromoter.html" class="action-button">Get Sharing Link</a><small>Your unique sharing link will be generated here.</small></div></body></html>'></iframe>
+                </div>
+            </div>
+
+            <div class="next-button-container">
+                <button type="submit">Next</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
